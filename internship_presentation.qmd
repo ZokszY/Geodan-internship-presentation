@@ -1,0 +1,41 @@
+---
+title: "Internship presentation"
+subtitle: "Tree object detection using airborne images and LiDAR point clouds"
+author: "Alexandre Bry"
+incremental: true
+slide-level: 2
+format:
+  revealjs:
+    transition: slide
+    theme: [default, _extensions/grantmcdermott/clean/clean.scss]
+# nice themes: blood, dark, default, serif,
+    slide-number: true
+    show-slide-number: all
+  beamer:
+    theme: AnnArbor
+    colortheme: lily
+---
+
+# Introduction
+
+<!-- Ce qu'il est important de faire ressortir est :
+
+- le contexte du travail, le problème sur lequel vous avez travaillé et l’état de l'art
+
+- la solution (ou solution partielle) que vous avez proposée, mise en perspective avec l’état de l'art
+
+- les problèmes que votre travail laisse ouverts, qui pourraient constituer un point de départ pour une continuation, ou sur lesquels vous allez travailler pendant la période de stage restante. -->
+
+# State-of-the-art
+
+## Models
+
+## Datasets
+
+# Creation of a new dataset
+
+## Data available in the Netherlands
+
+# Model and experiments
+
+# Results
