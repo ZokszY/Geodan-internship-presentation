@@ -4,6 +4,7 @@ subtitle: "Tree object detection using airborne images and LiDAR point clouds"
 author: "Alexandre Bry"
 incremental: true
 slide-level: 2
+reference-location: document
 format:
   revealjs:
     transition: slide
@@ -18,24 +19,77 @@ format:
 
 # Introduction
 
+## Goal of the internship
+
+- Diagram RGB + LiDAR -> DL model -> bounding boxes around trees
+
+## Additional goals
+
+- Find all trees, including covered trees
+- Extract more information from the point cloud than its surface
+
 <!-- Ce qu'il est important de faire ressortir est :
-
 - le contexte du travail, le problème sur lequel vous avez travaillé et l’état de l'art
-
 - la solution (ou solution partielle) que vous avez proposée, mise en perspective avec l’état de l'art
-
 - les problèmes que votre travail laisse ouverts, qui pourraient constituer un point de départ pour une continuation, ou sur lesquels vous allez travailler pendant la période de stage restante. -->
 
 # State-of-the-art
 
-## Models
+## YOLOv8 model {.scrollable}
 
-## Datasets
+![YOLOv8 architecture ([https://github.com/ultralytics/ultralytics/issues/189](https://github.com/ultralytics/ultralytics/issues/189))](figures/images/YOLOv8-architecture.jpg){height="500"}
 
-# Creation of a new dataset
+## AMF GD YOLOv8
+
+![The architecture of AMF GD YOLOv8](figures/diagrams/Modifed_AMF_GD_YOLOv8.png){.r-stretch}
+
+## NEON dataset
+
+- Creation process
+- Example images
+
+# My dataset of trees
 
 ## Data available in the Netherlands
 
-# Model and experiments
+- Point cloud
+- RGB images
+- CIR images
+- Public trees
+
+## Class labels
+
+- Tree
+- Tree_LiDAR
+- Tree_RGB
+- Tree_low_hard
+
+## Spatial extent
+
+- Image with full dataset extent
+- Replaced by image with annotated areas
+
+## Annotation material
+
+- RGB images
+- Point cloud from above, colored by height, on a given interval
+- Point cloud in 3D
+- Google StreetView images
+
+## Temporal shift
+
+- Cut trees
+- New small trees
+- Replaced trees
+
+## Location shift
+
+- Images of all data types on the same coordinates
+
+# Experiments
 
 # Results
+
+# Potential future improvements
+
+# Conclusion

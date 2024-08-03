@@ -8,7 +8,7 @@
 <link href="internship_presentation_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="internship_presentation_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="internship_presentation_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.47">
+  <meta name="generator" content="quarto-1.5.54">
 
   <meta name="author" content="Alexandre Bry">
   <title>Internship presentation</title>
@@ -338,43 +338,123 @@ Alexandre Bry
 </div>
 
 </section>
+<section>
 <section id="introduction" class="title-slide slide level1 center">
 <h1>Introduction</h1>
-<!-- Ce qu'il est important de faire ressortir est :
 
-- le contexte du travail, le problème sur lequel vous avez travaillé et l’état de l'art
-
-- la solution (ou solution partielle) que vous avez proposée, mise en perspective avec l’état de l'art
-
-- les problèmes que votre travail laisse ouverts, qui pourraient constituer un point de départ pour une continuation, ou sur lesquels vous allez travailler pendant la période de stage restante. -->
 </section>
-
+<section id="goal-of-the-internship" class="slide level2">
+<h2>Goal of the internship</h2>
+<ul>
+<li class="fragment">Diagram RGB + LiDAR -&gt; DL model -&gt; bounding boxes around trees</li>
+</ul>
+</section>
+<section id="additional-goals" class="slide level2">
+<h2>Additional goals</h2>
+<ul>
+<li class="fragment">Find all trees, including covered trees</li>
+<li class="fragment">Extract more information from the point cloud than its surface</li>
+</ul>
+<!-- Ce qu'il est important de faire ressortir est :
+- le contexte du travail, le problème sur lequel vous avez travaillé et l’état de l'art
+- la solution (ou solution partielle) que vous avez proposée, mise en perspective avec l’état de l'art
+- les problèmes que votre travail laisse ouverts, qui pourraient constituer un point de départ pour une continuation, ou sur lesquels vous allez travailler pendant la période de stage restante. -->
+</section></section>
 <section>
 <section id="state-of-the-art" class="title-slide slide level1 center">
 <h1>State-of-the-art</h1>
 
 </section>
-<section id="models" class="slide level2">
-<h2>Models</h2>
+<section id="yolov8-model" class="slide level2 scrollable">
+<h2>YOLOv8 model</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/images/YOLOv8-architecture.jpg" height="500"></p>
+<figcaption>YOLOv8 architecture (<a href="https://github.com/ultralytics/ultralytics/issues/189">https://github.com/ultralytics/ultralytics/issues/189</a>)</figcaption>
+</figure>
+</div>
 </section>
-<section id="datasets" class="slide level2">
-<h2>Datasets</h2>
+<section id="amf-gd-yolov8" class="slide level2">
+<h2>AMF GD YOLOv8</h2>
+
+<img data-src="figures/diagrams/Modifed_AMF_GD_YOLOv8.png" class="r-stretch quarto-figure-center"><p class="caption">The architecture of AMF GD YOLOv8</p></section>
+<section id="neon-dataset" class="slide level2">
+<h2>NEON dataset</h2>
+<ul>
+<li class="fragment">Creation process</li>
+<li class="fragment">Example images</li>
+</ul>
 </section></section>
 <section>
-<section id="creation-of-a-new-dataset" class="title-slide slide level1 center">
-<h1>Creation of a new dataset</h1>
+<section id="my-dataset-of-trees" class="title-slide slide level1 center">
+<h1>My dataset of trees</h1>
 
 </section>
 <section id="data-available-in-the-netherlands" class="slide level2">
 <h2>Data available in the Netherlands</h2>
+<ul>
+<li class="fragment">Point cloud</li>
+<li class="fragment">RGB images</li>
+<li class="fragment">CIR images</li>
+<li class="fragment">Public trees</li>
+</ul>
+</section>
+<section id="class-labels" class="slide level2">
+<h2>Class labels</h2>
+<ul>
+<li class="fragment">Tree</li>
+<li class="fragment">Tree_LiDAR</li>
+<li class="fragment">Tree_RGB</li>
+<li class="fragment">Tree_low_hard</li>
+</ul>
+</section>
+<section id="spatial-extent" class="slide level2">
+<h2>Spatial extent</h2>
+<ul>
+<li class="fragment">Image with full dataset extent</li>
+<li class="fragment">Replaced by image with annotated areas</li>
+</ul>
+</section>
+<section id="annotation-material" class="slide level2">
+<h2>Annotation material</h2>
+<ul>
+<li class="fragment">RGB images</li>
+<li class="fragment">Point cloud from above, colored by height, on a given interval</li>
+<li class="fragment">Point cloud in 3D</li>
+<li class="fragment">Google StreetView images</li>
+</ul>
+</section>
+<section id="temporal-shift" class="slide level2">
+<h2>Temporal shift</h2>
+<ul>
+<li class="fragment">Cut trees</li>
+<li class="fragment">New small trees</li>
+<li class="fragment">Replaced trees</li>
+</ul>
+</section>
+<section id="location-shift" class="slide level2">
+<h2>Location shift</h2>
+<ul>
+<li class="fragment">Images of all data types on the same coordinates</li>
+</ul>
 </section></section>
-<section id="model-and-experiments" class="title-slide slide level1 center">
-<h1>Model and experiments</h1>
+<section id="experiments" class="title-slide slide level1 center">
+<h1>Experiments</h1>
 
 </section>
 
 <section id="results" class="title-slide slide level1 center">
 <h1>Results</h1>
+
+</section>
+
+<section id="potential-future-improvements" class="title-slide slide level1 center">
+<h1>Potential future improvements</h1>
+
+</section>
+
+<section id="conclusion" class="title-slide slide level1 center">
+<h1>Conclusion</h1>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
