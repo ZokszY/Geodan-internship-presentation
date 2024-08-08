@@ -1,0 +1,11 @@
+.center-xy {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+}
+.center-y {
+    display: flex !important;
+    align-items: center;
+    height: 90%;
+}

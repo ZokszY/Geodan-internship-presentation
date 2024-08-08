@@ -8,7 +8,7 @@
 <link href="internship_presentation_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="internship_presentation_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="internship_presentation_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.54">
+  <meta name="generator" content="quarto-1.5.47">
 
   <meta name="author" content="Alexandre Bry">
   <title>Internship presentation</title>
@@ -31,6 +31,7 @@
     }
   </style>
   <link rel="stylesheet" href="internship_presentation_files/libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="styles.css">
   <link href="internship_presentation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="internship_presentation_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="internship_presentation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -341,7 +342,19 @@ Alexandre Bry
 <section>
 <section id="introduction" class="title-slide slide level1 center">
 <h1>Introduction</h1>
-
+<aside class="notes">
+<p>Ce qu’il est important de faire ressortir est : - le contexte du travail, le problème sur lequel vous avez travaillé et l’état de l’art - la solution (ou solution partielle) que vous avez proposée, mise en perspective avec l’état de l’art - les problèmes que votre travail laisse ouverts, qui pourraient constituer un point de départ pour une continuation, ou sur lesquels vous allez travailler pendant la période de stage restante.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="goal-of-the-internship" class="slide level2">
 <h2>Goal of the internship</h2>
@@ -355,10 +368,19 @@ Alexandre Bry
 <li class="fragment">Find all trees, including covered trees</li>
 <li class="fragment">Extract more information from the point cloud than its surface</li>
 </ul>
-<!-- Ce qu'il est important de faire ressortir est :
-- le contexte du travail, le problème sur lequel vous avez travaillé et l’état de l'art
-- la solution (ou solution partielle) que vous avez proposée, mise en perspective avec l’état de l'art
-- les problèmes que votre travail laisse ouverts, qui pourraient constituer un point de départ pour une continuation, ou sur lesquels vous allez travailler pendant la période de stage restante. -->
+<aside class="notes">
+<p>These two goals are related to each other.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section>
 <section id="state-of-the-art" class="title-slide slide level1 center">
@@ -367,23 +389,90 @@ Alexandre Bry
 </section>
 <section id="yolov8-model" class="slide level2 scrollable">
 <h2>YOLOv8 model</h2>
+<div class="center-xy">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="figures/images/YOLOv8-architecture.jpg" height="500"></p>
-<figcaption>YOLOv8 architecture (<a href="https://github.com/ultralytics/ultralytics/issues/189">https://github.com/ultralytics/ultralytics/issues/189</a>)</figcaption>
+<figcaption>The architecture of YOLOv8 (<a href="https://github.com/ultralytics/ultralytics/issues/189">https://github.com/ultralytics/ultralytics/issues/189</a>)</figcaption>
 </figure>
 </div>
-</section>
-<section id="amf-gd-yolov8" class="slide level2">
-<h2>AMF GD YOLOv8</h2>
-
-<img data-src="figures/diagrams/Modifed_AMF_GD_YOLOv8.png" class="r-stretch quarto-figure-center"><p class="caption">The architecture of AMF GD YOLOv8</p></section>
-<section id="neon-dataset" class="slide level2">
-<h2>NEON dataset</h2>
+</div>
+<aside class="notes">
 <ul>
-<li class="fragment">Creation process</li>
-<li class="fragment">Example images</li>
+<li>SOTA</li>
+<li>Fast and reliable</li>
+<li>One-shot detection</li>
+<li>Predicts boxes and classes</li>
 </ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="amf-gd-yolov8" class="slide level2 scrollable">
+<h2>AMF GD YOLOv8</h2>
+<div class="center-xy">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/diagrams/Modified_AMF_GD_YOLOv8.png" height="350"></p>
+<figcaption>The architecture of AMF GD YOLOv8</figcaption>
+</figure>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>Adaptation of YOLOv8 for multiple inputs</li>
+<li>Fusion of features</li>
+<li>Same detection layers</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="neon-dataset" class="slide level2 scrollable">
+<h2>NEON dataset</h2>
+<div class="columns center-y">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/images/NEON_example.png" style="width:100.0%"></p>
+<figcaption>Example of an annotated forest in the NEON dataset (<a href="https://visualize.idtrees.org/">https://visualize.idtrees.org/</a>)</figcaption>
+</figure>
+</div>
+</div><div class="column">
+<ul>
+<li class="fragment"><strong>Creation process</strong>:
+<ul>
+<li class="fragment">10k hand-annotated</li>
+<li class="fragment">30M auto-annotated</li>
+</ul></li>
+<li class="fragment"><strong>Strengths</strong>:
+<ul>
+<li class="fragment">Diversity</li>
+<li class="fragment">Tree species</li>
+</ul></li>
+<li class="fragment"><strong>Weaknesses</strong>:
+<ul>
+<li class="fragment">Image quality</li>
+<li class="fragment">Covered trees</li>
+</ul></li>
+</ul>
+</div></div>
 </section></section>
 <section>
 <section id="my-dataset-of-trees" class="title-slide slide level1 center">
@@ -398,15 +487,99 @@ Alexandre Bry
 <li class="fragment">CIR images</li>
 <li class="fragment">Public trees</li>
 </ul>
+<aside class="notes">
+<p>Reasons for choosing the Netherlands data:</p>
+<ul>
+<li>Quality</li>
+<li>Consistency</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="temporal-shift" class="slide level2">
+<h2>Temporal shift</h2>
+<ul>
+<li class="fragment">Cut trees</li>
+<li class="fragment">New small trees</li>
+<li class="fragment">Replaced trees</li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Images from 2023</li>
+<li>Point clouds from 2020</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="location-shift" class="slide level2">
+<h2>Location shift</h2>
+<ul>
+<li class="fragment">Images of all data types on the same coordinates</li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Non-orthogonal images:
+<ul>
+<li>Bigger shift when further from flight lines</li>
+<li>Bigger shift when higher flight altitude</li>
+<li>Different shift with different flight lines</li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="class-labels" class="slide level2">
 <h2>Class labels</h2>
+<div class="center-y">
 <ul>
 <li class="fragment">Tree</li>
-<li class="fragment">Tree_LiDAR</li>
-<li class="fragment">Tree_RGB</li>
-<li class="fragment">Tree_low_hard</li>
+<li class="fragment">Tree_LiDAR (cut trees)</li>
+<li class="fragment">Tree_RGB (planted trees)</li>
+<li class="fragment">Tree_low_hard (covered trees)</li>
 </ul>
+</div>
+<aside class="notes">
+<ul>
+<li>Link with shifts</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="spatial-extent" class="slide level2">
 <h2>Spatial extent</h2>
@@ -414,6 +587,22 @@ Alexandre Bry
 <li class="fragment">Image with full dataset extent</li>
 <li class="fragment">Replaced by image with annotated areas</li>
 </ul>
+<aside class="notes">
+<ul>
+<li>Over a 1&nbsp;km&nbsp;×&nbsp;1&nbsp;km area</li>
+<li>2726 trees</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="annotation-material" class="slide level2">
 <h2>Annotation material</h2>
@@ -423,36 +612,85 @@ Alexandre Bry
 <li class="fragment">Point cloud in 3D</li>
 <li class="fragment">Google StreetView images</li>
 </ul>
-</section>
-<section id="temporal-shift" class="slide level2">
-<h2>Temporal shift</h2>
-<ul>
-<li class="fragment">Cut trees</li>
-<li class="fragment">New small trees</li>
-<li class="fragment">Replaced trees</li>
-</ul>
-</section>
-<section id="location-shift" class="slide level2">
-<h2>Location shift</h2>
-<ul>
-<li class="fragment">Images of all data types on the same coordinates</li>
-</ul>
 </section></section>
+<section>
 <section id="experiments" class="title-slide slide level1 center">
 <h1>Experiments</h1>
 
 </section>
-
-<section id="results" class="title-slide slide level1 center">
-<h1>Results</h1>
-
+<section id="random-input-drop" class="slide level2">
+<h2>Random input drop</h2>
+<div class="columns center-y">
+<div class="column">
+<ul>
+<li class="fragment"><strong>Goal</strong>: push the model to use RGB <em>and</em> CHM</li>
+<li class="fragment"><strong>Idea</strong>: randomly drop either RGB <em>or</em> CHM</li>
+<li class="fragment">Combined with random channel drop</li>
+</ul>
+</div><div class="column">
+<p><img data-src="figures/images/Quarto_generated/fig-training-parameters-drop.svg"></p>
+</div></div>
 </section>
-
+<section id="chm-layers" class="slide level2">
+<h2>CHM layers</h2>
+<div class="columns center-y">
+<div class="column">
+<p>4 layers of CHM</p>
+</div><div class="column">
+<ul>
+<li class="fragment"><strong>Goals</strong>:
+<ul>
+<li class="fragment">Use more data from the point cloud, including trunks</li>
+<li class="fragment">Find covered trees</li>
+</ul></li>
+<li class="fragment"><strong>Idea</strong>: create different levels of CHM</li>
+<li class="fragment">Combined with random channel drop</li>
+</ul>
+</div></div>
+</section></section>
+<section>
 <section id="potential-future-improvements" class="title-slide slide level1 center">
 <h1>Potential future improvements</h1>
 
 </section>
-
+<section id="dataset" class="slide level2">
+<h2>Dataset</h2>
+<ul>
+<li class="fragment"><strong>More data</strong>:
+<ul>
+<li class="fragment">Surface</li>
+<li class="fragment">Diversity</li>
+</ul></li>
+<li class="fragment"><strong>Improved annotations</strong>:
+<ul>
+<li class="fragment">Species</li>
+<li class="fragment">Precise polygons/masks</li>
+</ul></li>
+<li class="fragment"><strong>Artificial annotations</strong>:
+<ul>
+<li class="fragment">Classical techniques</li>
+<li class="fragment">Municipalities</li>
+</ul></li>
+</ul>
+</section>
+<section id="training-stability" class="slide level2">
+<h2>Training stability</h2>
+<aside class="notes">
+<ul>
+<li>Makes deductions difficult</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
 <section id="conclusion" class="title-slide slide level1 center">
 <h1>Conclusion</h1>
 <div class="quarto-auto-generated-content">

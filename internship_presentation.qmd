@@ -12,12 +12,22 @@ format:
 # nice themes: blood, dark, default, serif,
     slide-number: true
     show-slide-number: all
-  beamer:
-    theme: AnnArbor
-    colortheme: lily
+    css: styles.css
+  # beamer:
+  #   theme: AnnArbor
+  #   colortheme: lily
 ---
 
 # Introduction
+
+::: {.notes}
+
+Ce qu'il est important de faire ressortir est :
+- le contexte du travail, le problème sur lequel vous avez travaillé et l’état de l'art
+- la solution (ou solution partielle) que vous avez proposée, mise en perspective avec l’état de l'art
+- les problèmes que votre travail laisse ouverts, qui pourraient constituer un point de départ pour une continuation, ou sur lesquels vous allez travailler pendant la période de stage restante.
+
+:::
 
 ## Goal of the internship
 
@@ -28,25 +38,66 @@ format:
 - Find all trees, including covered trees
 - Extract more information from the point cloud than its surface
 
-<!-- Ce qu'il est important de faire ressortir est :
-- le contexte du travail, le problème sur lequel vous avez travaillé et l’état de l'art
-- la solution (ou solution partielle) que vous avez proposée, mise en perspective avec l’état de l'art
-- les problèmes que votre travail laisse ouverts, qui pourraient constituer un point de départ pour une continuation, ou sur lesquels vous allez travailler pendant la période de stage restante. -->
+::: {.notes}
+
+These two goals are related to each other.
+
+:::
 
 # State-of-the-art
 
 ## YOLOv8 model {.scrollable}
 
-![YOLOv8 architecture ([https://github.com/ultralytics/ultralytics/issues/189](https://github.com/ultralytics/ultralytics/issues/189))](figures/images/YOLOv8-architecture.jpg){height="500"}
+::: {.center-xy}
 
-## AMF GD YOLOv8
+![The architecture of YOLOv8 ([https://github.com/ultralytics/ultralytics/issues/189](https://github.com/ultralytics/ultralytics/issues/189))](figures/images/YOLOv8-architecture.jpg){height=500px}
 
-![The architecture of AMF GD YOLOv8](figures/diagrams/Modifed_AMF_GD_YOLOv8.png){.r-stretch}
+:::
 
-## NEON dataset
+::: {.notes}
 
-- Creation process
-- Example images
+- SOTA
+- Fast and reliable
+- One-shot detection
+- Predicts boxes and classes 
+
+:::
+
+## AMF GD YOLOv8 {.scrollable}
+
+::: {.center-xy}
+
+![The architecture of AMF GD YOLOv8](figures/diagrams/Modified_AMF_GD_YOLOv8.png){height=350px}
+
+:::
+
+::: {.notes}
+- Adaptation of YOLOv8 for multiple inputs
+- Fusion of features
+- Same detection layers
+:::
+
+## NEON dataset {.scrollable}
+
+:::: {.columns .center-y}
+
+::: {.column}
+![Example of an annotated forest in the NEON dataset ([https://visualize.idtrees.org/](https://visualize.idtrees.org/))](figures/images/NEON_example.png){width="100%"}
+:::
+
+::: {.column}
+- **Creation process**:
+  - 10k hand-annotated
+  - 30M auto-annotated
+- **Strengths**:
+  - Diversity
+  - Tree species
+- **Weaknesses**:
+  - Image quality
+  - Covered trees
+:::
+
+::::
 
 # My dataset of trees
 
@@ -57,17 +108,57 @@ format:
 - CIR images
 - Public trees
 
+::: {.notes}
+Reasons for choosing the Netherlands data:
+
+- Quality
+- Consistency
+:::
+
+## Temporal shift
+
+- Cut trees
+- New small trees
+- Replaced trees
+
+::: {.notes}
+- Images from 2023
+- Point clouds from 2020
+:::
+
+## Location shift
+
+- Images of all data types on the same coordinates
+
+::: {.notes}
+- Non-orthogonal images:
+  - Bigger shift when further from flight lines
+  - Bigger shift when higher flight altitude
+  - Different shift with different flight lines
+:::
+
 ## Class labels
 
+::: {.center-y}
 - Tree
-- Tree_LiDAR
-- Tree_RGB
-- Tree_low_hard
+- Tree_LiDAR (cut trees)
+- Tree_RGB (planted trees)
+- Tree_low_hard (covered trees)
+:::
+
+::: {.notes}
+- Link with shifts
+:::
 
 ## Spatial extent
 
 - Image with full dataset extent
 - Replaced by image with annotated areas
+
+::: {.notes}
+- Over a 1 km × 1 km area
+- 2726 trees
+:::
 
 ## Annotation material
 
@@ -76,20 +167,60 @@ format:
 - Point cloud in 3D
 - Google StreetView images
 
-## Temporal shift
-
-- Cut trees
-- New small trees
-- Replaced trees
-
-## Location shift
-
-- Images of all data types on the same coordinates
-
 # Experiments
 
-# Results
+## Random input drop
+
+:::: {.columns .center-y}
+
+::: {.column}
+- **Goal**: push the model to use RGB *and* CHM
+- **Idea**: randomly drop either RGB *or* CHM
+- Combined with random channel drop
+:::
+
+::: {.column}
+![](figures/images/Quarto_generated/fig-training-parameters-drop.svg)
+:::
+
+::::
+
+## CHM layers
+
+:::: {.columns .center-y}
+
+::: {.column}
+4 layers of CHM
+:::
+
+::: {.column}
+- **Goals**:
+  - Use more data from the point cloud, including trunks
+  - Find covered trees
+- **Idea**: create different levels of CHM
+- Combined with random channel drop
+:::
+
+::::
 
 # Potential future improvements
+
+## Dataset
+
+- **More data**:
+  - Surface
+  - Diversity
+- **Improved annotations**:
+  - Species
+  - Precise polygons/masks
+- **Artificial annotations**:
+  - Classical techniques
+  - Municipalities
+
+## Training stability
+
+::: {.notes}
+- Makes deductions difficult
+:::
 
 # Conclusion
