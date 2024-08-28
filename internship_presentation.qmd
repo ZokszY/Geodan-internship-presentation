@@ -31,7 +31,7 @@ Ce qu'il est important de faire ressortir est :
 
 ## Goal of the internship
 
-- Diagram RGB + LiDAR -> DL model -> bounding boxes around trees
+![Deep learning model synthesis](figures/diagrams/Synthetic_diagram/Synthetic_diagram.png)
 
 ## Additional goals
 
@@ -85,16 +85,22 @@ These two goals are related to each other.
 ![Example of an annotated forest in the NEON dataset ([https://visualize.idtrees.org/](https://visualize.idtrees.org/))](figures/images/NEON_example.png){width="100%"}
 :::
 
-::: {.column}
+::: {.column .nonincremental}
+:::: {.fragment}
 - **Creation process**:
   - 10k hand-annotated
   - 30M auto-annotated
+::::
+:::: {.fragment}
 - **Strengths**:
   - Diversity
   - Tree species
+::::
+:::: {.fragment}
 - **Weaknesses**:
   - Image quality
   - Covered trees
+::::
 :::
 
 ::::
@@ -103,10 +109,18 @@ These two goals are related to each other.
 
 ## Data available in the Netherlands
 
-- Point cloud
-- RGB images
-- CIR images
-- Public trees
+::: {.nonincremental}
+::: {.fragment}
+- **"Raw" data**:
+  - Point cloud
+  - RGB images
+  - CIR images
+:::
+::: {.fragment}
+- **Trees**:
+  - Public trees handled by municipalities
+:::
+:::
 
 ::: {.notes}
 Reasons for choosing the Netherlands data:
@@ -115,90 +129,132 @@ Reasons for choosing the Netherlands data:
 - Consistency
 :::
 
-## Temporal shift
+## Data inconsistencies
 
+::: {.columns}
+::: {.column .fragment width=40%}
+### Temporal shift
+
+::: {.nonincremental}
 - Cut trees
 - New small trees
 - Replaced trees
-
-::: {.notes}
-- Images from 2023
-- Point clouds from 2020
 :::
 
-## Location shift
+:::
+::: {.column .fragment width=60%}
+### Location shift
 
-- Images of all data types on the same coordinates
+::: {layout="[[1, 1], [1, 1]]" }
+![RGB](figures/images/Data_shift/RGB_image.png){width=230px}
+
+![Infrared](figures/images/Data_shift/CIR_image.png){width=230px}
+
+![CHM](figures/images/Data_shift/CHM_all_color.png){width=230px}
+
+![LiDAR](figures/images/Data_shift/LiDAR.png){width=230px}
+:::
+
+:::
+:::
 
 ::: {.notes}
+- Dates:
+  - Images from 2023
+  - Point clouds from 2020
 - Non-orthogonal images:
   - Bigger shift when further from flight lines
   - Bigger shift when higher flight altitude
   - Different shift with different flight lines
 :::
 
-## Class labels
+## Content
 
-::: {.center-y}
+:::: {.columns}
+
+::: {.column .nonincremental width=40% .fragment}
+### Class labels
+
 - Tree
 - Tree_LiDAR (cut trees)
 - Tree_RGB (planted trees)
 - Tree_low_hard (covered trees)
 :::
 
+::: {.column width=60% .fragment}
+### Spatial extent
+
+![All the trees in the dataset](figures/images/Full_dataset/With_boxes.png){height=500}
+:::
+
 ::: {.notes}
 - Link with shifts
-:::
-
-## Spatial extent
-
-- Image with full dataset extent
-- Replaced by image with annotated areas
-
-::: {.notes}
 - Over a 1 km × 1 km area
-- 2726 trees
-:::
-
-## Annotation material
-
-- RGB images
-- Point cloud from above, colored by height, on a given interval
-- Point cloud in 3D
-- Google StreetView images
-
-# Experiments
-
-## Random input drop
-
-:::: {.columns .center-y}
-
-::: {.column}
-- **Goal**: push the model to use RGB *and* CHM
-- **Idea**: randomly drop either RGB *or* CHM
-- Combined with random channel drop
-:::
-
-::: {.column}
-![](figures/images/Quarto_generated/fig-training-parameters-drop.svg)
+- 2668 trees
 :::
 
 ::::
+
+## Annotation material
+
+::: {layout="[[1, 1], [1, 1]]" }
+![RGB images](figures/images/Annotation_setup/RGB_image.png){height=230px}
+
+![Point cloud from above, colored by height, between 2 m and 20 m](figures/images/Annotation_setup/LiDAR_2_20.png){height=230px}
+
+![Point cloud in 3D](figures/images/Annotation_setup/LiDAR_3D.png){height=230px}
+
+![Google StreetView images](figures/images/Annotation_setup/StreetView.png){height=230px}
+:::
+
+# Experiments
 
 ## CHM layers
 
 :::: {.columns .center-y}
 
-::: {.column}
-4 layers of CHM
+::: {.column .fragment fragment-index=3}
+::: {layout="[[1, 1], [1, 1]]" }
+![Height: 2 m to 30 m](figures/images/CHM_layers/Point_cloud_2_30.png){height=230px}
+
+![Height: 2 m to 20 m](figures/images/CHM_layers/Point_cloud_2_20.png){height=230px}
+
+![Height: 2 m to 13 m](figures/images/CHM_layers/Point_cloud_2_13.png){height=230px}
+
+![Height: 2 m to 8 m](figures/images/CHM_layers/Point_cloud_2_8.png){height=230px}
+:::
 :::
 
-::: {.column}
+::: {.column .nonincremental}
+::: {.fragment fragment-index=1}
 - **Goals**:
   - Use more data from the point cloud, including trunks
   - Find covered trees
+:::
+::: {.fragment fragment-index=2}
 - **Idea**: create different levels of CHM
+:::
+:::
+
+::::
+
+::: {.notes}
+- Different ways of extracting point clouds
+- Simple solution to get access to the lower parts of the point cloud
+:::
+
+## Random input drop
+
+:::: {.columns .center-y}
+
+::: {.column width=40%}
+- **Goal**: push the model to use RGB *and* CHM
+- **Idea**: randomly drop either RGB *or* CHM
 - Combined with random channel drop
+:::
+
+::: {.column width=60% .fragment}
+![](figures/images/Quarto_generated/fig-training-parameters-drop.svg)
 :::
 
 ::::
@@ -207,20 +263,64 @@ Reasons for choosing the Netherlands data:
 
 ## Dataset
 
+::: {.nonincremental}
+::: {.fragment}
 - **More data**:
   - Surface
   - Diversity
+:::
+::: {.fragment}
 - **Improved annotations**:
   - Species
   - Precise polygons/masks
+:::
+::: {.fragment}
 - **Artificial annotations**:
   - Classical techniques
   - Municipalities
+:::
+:::
 
-## Training stability
+## Training instability
+
+::: {.nonincremental}
+::: {.fragment}
+- **Larger dataset**:
+  - More trees
+  - More diverse environments
+  - Better augmentations (for CHM as well)
+:::
+::: {.fragment}
+- **Other loss functions?**
+:::
+::: {.fragment}
+- **Regularization techniques**:
+  - Weight decay
+  - Batch normalization
+:::
+:::
 
 ::: {.notes}
 - Makes deductions difficult
+- Already using:
+  - Batch accumulation
+  - Early stopping
 :::
 
 # Conclusion
+
+## Conclusion
+
+::: {.nonincremental}
+::: {.fragment}
+- **New tree detection dataset**:
+  - RGB and infrared images
+  - Point clouds
+  - Trees bounding boxes (including covered trees)
+:::
+::: {.fragment}
+- **Promising model**:
+  - Based on YOLOv8 backbone
+  - Could potentially find covered tress
+:::
+:::

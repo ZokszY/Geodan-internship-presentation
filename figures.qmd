@@ -76,7 +76,7 @@ g = sns.catplot(
 )
 
 g.tight_layout()
-plt.subplots_adjust(right=0.79)
+plt.subplots_adjust(right=0.75)
 
 plt.savefig("figures/images/Quarto_generated/fig-training-parameters-drop.svg")
 plt.savefig("figures/images/Quarto_generated/fig-training-parameters-drop.pdf")

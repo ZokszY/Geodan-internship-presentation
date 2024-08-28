@@ -358,10 +358,8 @@ Alexandre Bry
 </section>
 <section id="goal-of-the-internship" class="slide level2">
 <h2>Goal of the internship</h2>
-<ul>
-<li class="fragment">Diagram RGB + LiDAR -&gt; DL model -&gt; bounding boxes around trees</li>
-</ul>
-</section>
+
+<img data-src="figures/diagrams/Synthetic_diagram/Synthetic_diagram.png" class="r-stretch quarto-figure-center"><p class="caption">Deep learning model synthesis</p></section>
 <section id="additional-goals" class="slide level2">
 <h2>Additional goals</h2>
 <ul>
@@ -455,23 +453,33 @@ Alexandre Bry
 </figure>
 </div>
 </div><div class="column">
+<div class="fragment">
 <ul>
-<li class="fragment"><strong>Creation process</strong>:
+<li><strong>Creation process</strong>:
 <ul>
-<li class="fragment">10k hand-annotated</li>
-<li class="fragment">30M auto-annotated</li>
-</ul></li>
-<li class="fragment"><strong>Strengths</strong>:
-<ul>
-<li class="fragment">Diversity</li>
-<li class="fragment">Tree species</li>
-</ul></li>
-<li class="fragment"><strong>Weaknesses</strong>:
-<ul>
-<li class="fragment">Image quality</li>
-<li class="fragment">Covered trees</li>
+<li>10k hand-annotated</li>
+<li>30M auto-annotated</li>
 </ul></li>
 </ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Strengths</strong>:
+<ul>
+<li>Diversity</li>
+<li>Tree species</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Weaknesses</strong>:
+<ul>
+<li>Image quality</li>
+<li>Covered trees</li>
+</ul></li>
+</ul>
+</div>
 </div></div>
 </section></section>
 <section>
@@ -481,12 +489,26 @@ Alexandre Bry
 </section>
 <section id="data-available-in-the-netherlands" class="slide level2">
 <h2>Data available in the Netherlands</h2>
+<div>
+<div class="fragment">
 <ul>
-<li class="fragment">Point cloud</li>
-<li class="fragment">RGB images</li>
-<li class="fragment">CIR images</li>
-<li class="fragment">Public trees</li>
+<li><strong>“Raw” data</strong>:
+<ul>
+<li>Point cloud</li>
+<li>RGB images</li>
+<li>CIR images</li>
+</ul></li>
 </ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Trees</strong>:
+<ul>
+<li>Public trees handled by municipalities</li>
+</ul></li>
+</ul>
+</div>
+</div>
 <aside class="notes">
 <p>Reasons for choosing the Netherlands data:</p>
 <ul>
@@ -505,37 +527,71 @@ Alexandre Bry
           display:block!important;
       }</style></aside>
 </section>
-<section id="temporal-shift" class="slide level2">
-<h2>Temporal shift</h2>
+<section id="data-inconsistencies" class="slide level2">
+<h2>Data inconsistencies</h2>
+<div class="columns">
+<div class="column fragment" style="width:40%;">
+<!-- -->
+<h3 id="temporal-shift">Temporal shift</h3>
+<div>
 <ul>
-<li class="fragment">Cut trees</li>
-<li class="fragment">New small trees</li>
-<li class="fragment">Replaced trees</li>
+<li>Cut trees</li>
+<li>New small trees</li>
+<li>Replaced trees</li>
 </ul>
+</div>
+</div><div class="column fragment" style="width:60%;">
+<!-- -->
+<h3 id="location-shift">Location shift</h3>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[1, 1], [1, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/images/Data_shift/RGB_image.png" width="230"></p>
+<figcaption>RGB</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/images/Data_shift/CIR_image.png" width="230"></p>
+<figcaption>Infrared</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/images/Data_shift/CHM_all_color.png" width="230"></p>
+<figcaption>CHM</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/images/Data_shift/LiDAR.png" width="230"></p>
+<figcaption>LiDAR</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
 <aside class="notes">
+<ul>
+<li>Dates:
 <ul>
 <li>Images from 2023</li>
 <li>Point clouds from 2020</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="location-shift" class="slide level2">
-<h2>Location shift</h2>
-<ul>
-<li class="fragment">Images of all data types on the same coordinates</li>
-</ul>
-<aside class="notes">
-<ul>
+</ul></li>
 <li>Non-orthogonal images:
 <ul>
 <li>Bigger shift when further from flight lines</li>
@@ -555,42 +611,32 @@ Alexandre Bry
           display:block!important;
       }</style></aside>
 </section>
-<section id="class-labels" class="slide level2">
-<h2>Class labels</h2>
-<div class="center-y">
+<section id="content" class="slide level2">
+<h2>Content</h2>
+<div class="columns">
+<div class="column fragment" style="width:40%;">
+<!-- -->
+<h3 id="class-labels">Class labels</h3>
 <ul>
-<li class="fragment">Tree</li>
-<li class="fragment">Tree_LiDAR (cut trees)</li>
-<li class="fragment">Tree_RGB (planted trees)</li>
-<li class="fragment">Tree_low_hard (covered trees)</li>
+<li>Tree</li>
+<li>Tree_LiDAR (cut trees)</li>
+<li>Tree_RGB (planted trees)</li>
+<li>Tree_low_hard (covered trees)</li>
 </ul>
+</div><div class="column fragment" style="width:60%;">
+<!-- -->
+<h3 id="spatial-extent">Spatial extent</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/images/Full_dataset/With_boxes.png" height="500"></p>
+<figcaption>All the trees in the dataset</figcaption>
+</figure>
 </div>
-<aside class="notes">
+</div><aside class="notes">
 <ul>
 <li>Link with shifts</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="spatial-extent" class="slide level2">
-<h2>Spatial extent</h2>
-<ul>
-<li class="fragment">Image with full dataset extent</li>
-<li class="fragment">Replaced by image with annotated areas</li>
-</ul>
-<aside class="notes">
-<ul>
 <li>Over a 1&nbsp;km&nbsp;×&nbsp;1&nbsp;km area</li>
-<li>2726 trees</li>
+<li>2668 trees</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -603,49 +649,146 @@ Alexandre Bry
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</div>
 </section>
 <section id="annotation-material" class="slide level2">
 <h2>Annotation material</h2>
-<ul>
-<li class="fragment">RGB images</li>
-<li class="fragment">Point cloud from above, colored by height, on a given interval</li>
-<li class="fragment">Point cloud in 3D</li>
-<li class="fragment">Google StreetView images</li>
-</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[1, 1], [1, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/images/Annotation_setup/RGB_image.png" height="230"></p>
+<figcaption>RGB images</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/images/Annotation_setup/LiDAR_2_20.png" height="230"></p>
+<figcaption>Point cloud from above, colored by height, between 2&nbsp;m and 20&nbsp;m</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/images/Annotation_setup/LiDAR_3D.png" height="230"></p>
+<figcaption>Point cloud in 3D</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/images/Annotation_setup/StreetView.png" height="230"></p>
+<figcaption>Google StreetView images</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section></section>
 <section>
 <section id="experiments" class="title-slide slide level1 center">
 <h1>Experiments</h1>
 
 </section>
+<section id="chm-layers" class="slide level2">
+<h2>CHM layers</h2>
+<div class="columns center-y">
+<div class="column fragment" data-fragment-index="3">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[1, 1], [1, 1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/images/CHM_layers/Point_cloud_2_30.png" height="230"></p>
+<figcaption>Height: 2&nbsp;m to 30&nbsp;m</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/images/CHM_layers/Point_cloud_2_20.png" height="230"></p>
+<figcaption>Height: 2&nbsp;m to 20&nbsp;m</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/images/CHM_layers/Point_cloud_2_13.png" height="230"></p>
+<figcaption>Height: 2&nbsp;m to 13&nbsp;m</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/images/CHM_layers/Point_cloud_2_8.png" height="230"></p>
+<figcaption>Height: 2&nbsp;m to 8&nbsp;m</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="fragment" data-fragment-index="1">
+<ul>
+<li><strong>Goals</strong>:
+<ul>
+<li>Use more data from the point cloud, including trunks</li>
+<li>Find covered trees</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment" data-fragment-index="2">
+<ul>
+<li><strong>Idea</strong>: create different levels of CHM</li>
+</ul>
+</div>
+</div></div>
+<aside class="notes">
+<ul>
+<li>Different ways of extracting point clouds</li>
+<li>Simple solution to get access to the lower parts of the point cloud</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="random-input-drop" class="slide level2">
 <h2>Random input drop</h2>
 <div class="columns center-y">
-<div class="column">
+<div class="column" style="width:40%;">
 <ul>
 <li class="fragment"><strong>Goal</strong>: push the model to use RGB <em>and</em> CHM</li>
 <li class="fragment"><strong>Idea</strong>: randomly drop either RGB <em>or</em> CHM</li>
 <li class="fragment">Combined with random channel drop</li>
 </ul>
-</div><div class="column">
+</div><div class="column fragment" style="width:60%;">
 <p><img data-src="figures/images/Quarto_generated/fig-training-parameters-drop.svg"></p>
-</div></div>
-</section>
-<section id="chm-layers" class="slide level2">
-<h2>CHM layers</h2>
-<div class="columns center-y">
-<div class="column">
-<p>4 layers of CHM</p>
-</div><div class="column">
-<ul>
-<li class="fragment"><strong>Goals</strong>:
-<ul>
-<li class="fragment">Use more data from the point cloud, including trunks</li>
-<li class="fragment">Find covered trees</li>
-</ul></li>
-<li class="fragment"><strong>Idea</strong>: create different levels of CHM</li>
-<li class="fragment">Combined with random channel drop</li>
-</ul>
 </div></div>
 </section></section>
 <section>
@@ -655,29 +798,72 @@ Alexandre Bry
 </section>
 <section id="dataset" class="slide level2">
 <h2>Dataset</h2>
+<div>
+<div class="fragment">
 <ul>
-<li class="fragment"><strong>More data</strong>:
+<li><strong>More data</strong>:
 <ul>
-<li class="fragment">Surface</li>
-<li class="fragment">Diversity</li>
-</ul></li>
-<li class="fragment"><strong>Improved annotations</strong>:
-<ul>
-<li class="fragment">Species</li>
-<li class="fragment">Precise polygons/masks</li>
-</ul></li>
-<li class="fragment"><strong>Artificial annotations</strong>:
-<ul>
-<li class="fragment">Classical techniques</li>
-<li class="fragment">Municipalities</li>
+<li>Surface</li>
+<li>Diversity</li>
 </ul></li>
 </ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Improved annotations</strong>:
+<ul>
+<li>Species</li>
+<li>Precise polygons/masks</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Artificial annotations</strong>:
+<ul>
+<li>Classical techniques</li>
+<li>Municipalities</li>
+</ul></li>
+</ul>
+</div>
+</div>
 </section>
-<section id="training-stability" class="slide level2">
-<h2>Training stability</h2>
+<section id="training-instability" class="slide level2">
+<h2>Training instability</h2>
+<div>
+<div class="fragment">
+<ul>
+<li><strong>Larger dataset</strong>:
+<ul>
+<li>More trees</li>
+<li>More diverse environments</li>
+<li>Better augmentations (for CHM as well)</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Other loss functions?</strong></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Regularization techniques</strong>:
+<ul>
+<li>Weight decay</li>
+<li>Batch normalization</li>
+</ul></li>
+</ul>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>Makes deductions difficult</li>
+<li>Already using:
+<ul>
+<li>Batch accumulation</li>
+<li>Early stopping</li>
+</ul></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -691,14 +877,40 @@ Alexandre Bry
           display:block!important;
       }</style></aside>
 </section></section>
+<section>
 <section id="conclusion" class="title-slide slide level1 center">
 <h1>Conclusion</h1>
+
+</section>
+<section id="conclusion-1" class="slide level2">
+<h2>Conclusion</h2>
+<div>
+<div class="fragment">
+<ul>
+<li><strong>New tree detection dataset</strong>:
+<ul>
+<li>RGB and infrared images</li>
+<li>Point clouds</li>
+<li>Trees bounding boxes (including covered trees)</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Promising model</strong>:
+<ul>
+<li>Based on YOLOv8 backbone</li>
+<li>Could potentially find covered tress</li>
+</ul></li>
+</ul>
+</div>
+</div>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 

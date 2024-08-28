@@ -9,3 +9,11 @@
     align-items: center;
     height: 90%;
 }
+
+figcaption {
+    text-align:center;
+}
+
+.reveal img {
+    margin: 0;
+}
