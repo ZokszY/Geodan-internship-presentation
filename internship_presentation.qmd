@@ -5,6 +5,7 @@ author: "Alexandre Bry"
 incremental: true
 slide-level: 2
 reference-location: document
+date: 2024-06-31
 format:
   revealjs:
     transition: slide
@@ -324,3 +325,9 @@ Reasons for choosing the Netherlands data:
   - Could potentially find covered tress
 :::
 :::
+
+## Thank you
+
+Thank you for listening to my presentation.
+
+You can find the report here: [https://zokszy.github.io/Geodan-internship-report/](https://zokszy.github.io/Geodan-internship-report/).
